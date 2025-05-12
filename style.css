@@ -1,0 +1,252 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #1e3c72 0%, cyan 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    padding: 20px;
+}
+
+.app-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+h1 {
+    color: #2a5298;
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.subtitle {
+    color: black;
+    font-size: 1.1rem;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.record-button {
+    background: rgb(144, 0, 255);
+    color: white;
+    border: none;
+    padding: 20px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(42, 82, 152, 0.2);
+    position: relative;
+}
+
+/* Recording animation dots */
+.record-button.recording::after {
+    content: '';
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: white;
+    border-radius: 50%;
+    animation: recordingDots 1.5s infinite;
+}
+
+.record-button.recording::before {
+    content: '';
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: white;
+    border-radius: 50%;
+    animation: recordingDots 1.5s infinite 0.5s;
+}
+
+@keyframes recordingDots {
+    0% {
+    opacity: 0;
+}
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.record-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(42, 82, 152, 0.3);
+}
+
+.record-button.recording {
+    background: purple;
+    padding-right: 60px; /* Make space for the dots */
+}
+
+.mic-icon {
+    font-size: 1.4rem;
+}
+
+.status-message {
+    margin-top: 20px;
+    color: black;
+    font-size: 1.1rem;
+    text-align: center;
+}
+
+.result-container {
+    margin-top: 30px;
+    width: 100%;
+    display: none;
+}
+
+.song-info {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+}
+
+.song-info.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.song-info h3 {
+    color: #2a5298;
+    margin-bottom: 15px;
+    font-size: 1.4rem;
+}
+
+.song-info p {
+    color: black;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    line-height: 1.4;
+}
+
+.identified-song {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.recommendations {
+    margin-top: 30px;
+}
+
+.recommendation-list {
+    display: grid;
+    gap: 15px;
+    padding: 10px;
+}
+
+.recommendation-item {
+    background: linear-gradient(145deg, #f8f9fa, #ffffff);
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid #e9ecef;
+    transition: transform 0.2s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.recommendation-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.rec-title {
+    color: #2a5298;
+    font-weight: 600;
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.rec-artist {
+    color: #666;
+    font-size: 0.9rem;
+    margin-bottom: 3px;
+}
+
+.rec-duration {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Animation for recommendations */
+.recommendation-item {
+    animation: slideIn 0.5s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.recommendation-item:nth-child(1) { animation-delay: 0.1s; }
+.recommendation-item:nth-child(2) { animation-delay: 0.2s; }
+.recommendation-item:nth-child(3) { animation-delay: 0.3s; }
+.recommendation-item:nth-child(4) { animation-delay: 0.4s; }
+.recommendation-item:nth-child(5) { animation-delay: 0.5s; }
+
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+    
+    .app-card {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .record-button {
+        padding: 15px 30px;
+    font-size: 1rem;
+    }
+}
+  
