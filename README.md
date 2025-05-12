@@ -1,4 +1,4 @@
-PROJECT TITLE:"SMART AI-DRIVEN MUSIC ANALYZER TOOL"
+PROJECT TITLE: "SMART AI-DRIVEN MUSIC ANALYZER TOOL"
 
 The methodology for this project is structured into several stages, each contributing to the creation of a modular, scalable and intelligent music recognition system.
 
